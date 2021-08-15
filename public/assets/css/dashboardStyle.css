@@ -1,0 +1,29 @@
+
+
+.contain{
+    /* background-color: lime; */
+}
+
+.perencanaan-icon, .pencatatan-icon{
+    font-size: 60px;
+}
+
+.perencanaan-icon, .pencatatan-icon,.perencanaan-text, .pencatatan-text{
+    color: rgb(65, 65, 65);
+}
+
+/* .perencanaan-icon:hover, .pencatatan-icon:hover,.perencanaan-text:hover, .pencatatan-text:hover{
+    color: rgb(226, 226, 226);
+    transition: .4s;
+} */
+
+.perencanaan, .pencatatan {
+    background-color: rgb(165, 255, 113);
+    border-radius: 12px;
+}
+
+.perencanaan:hover, .pencatatan:hover {
+    background-color: rgb(101, 214, 39);
+    border-radius: 12px;
+    transition: .3s;
+}
