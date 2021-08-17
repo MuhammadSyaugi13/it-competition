@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Dashboard::index');
 $routes->get('/planning', 'Planning::index');
 $routes->get('/debit', 'Debit::index');
+// $routes->get('/login', 'Home::index');
 
 /*
  * --------------------------------------------------------------------
