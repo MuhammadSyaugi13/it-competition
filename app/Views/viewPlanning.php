@@ -16,7 +16,8 @@
 
     <h2 class="mb-5 text-center">Daftar Rencana Keuangan</h2>
 
-    <form action="" method="POST">
+    <form action="<?= ($dataPlanning === null) ? base_url('/planning/submit') : base_url('/planning/submit/edit'); ?>" method="POST">
+        <?= csrf_field(); ?>
         <div class="container-form rounded-3 ">
             <!-- bulan -->
             <div class="my-3 p-2 pemasukan mx-auto">
@@ -26,18 +27,18 @@
                     <!-- <input type="number" name="pemasukan" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center" id="pemasukan"> -->
 
                     <select class="form-select form-control pemasukan rounded-pill text-center" name="bulan">
-                        <option value="Januari">Januari</option>
-                        <option value="Februari">Februari</option>
-                        <option value="Maret">Maret</option>
-                        <option value="April">April</option>
-                        <option value="Mei">Mei</option>
-                        <option value="Juni">Juni</option>
-                        <option value="Juli">Juli</option>
-                        <option value="Agustus">Agustus</option>
-                        <option value="September">September</option>
-                        <option value="Oktober">Oktober</option>
-                        <option value="November">November</option>
-                        <option value="Desember">Desember</option>
+                        <option value="Januari" <?= ($dataPlanning['bulan'] === "Januari") ? 'selected' : ''; ?>>Januari</option>
+                        <option value="Februari" <?= ($dataPlanning['bulan'] === "Februari") ? 'selected' : ''; ?>>Februari</option>
+                        <option value="Maret" <?= ($dataPlanning['bulan'] === "Maret") ? 'selected' : ''; ?>>Maret</option>
+                        <option value="April" <?= ($dataPlanning['bulan'] === "April") ? 'selected' : ''; ?>>April</option>
+                        <option value="Mei" <?= ($dataPlanning['bulan'] === "Mei") ? 'selected' : ''; ?>>Mei</option>
+                        <option value="Juni" <?= ($dataPlanning['bulan'] === "Juni") ? 'selected' : ''; ?>>Juni</option>
+                        <option value="Juli" <?= ($dataPlanning['bulan'] === "Juli") ? 'selected' : ''; ?>>Juli</option>
+                        <option value="Agustus" <?= ($dataPlanning['bulan'] === "Agustus") ? 'selected' : ''; ?>>Agustus</option>
+                        <option value="September" <?= ($dataPlanning['bulan'] === "September") ? 'selected' : ''; ?>>September</option>
+                        <option value="Oktober" <?= ($dataPlanning['bulan'] === "Oktober") ? 'selected' : ''; ?>>Oktober</option>
+                        <option value="November" <?= ($dataPlanning['bulan'] === "November") ? 'selected' : ''; ?>>November</option>
+                        <option value="Desember" <?= ($dataPlanning['bulan'] === "Desember") ? 'selected' : ''; ?>>Desember</option>
                     </select>
                 </div>
                 <!-- <div id="emailHelp" class="form-text">*We'll never share your email with anyone else.</div> -->
@@ -49,7 +50,11 @@
             <div class="my-3 p-2 pemasukan mx-auto">
                 <div class="input-group  mb-1 mx-0">
                     <!-- <span class="input-group-text">5.000.000</span> -->
-                    <input type="number" name="pemasukan" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center" id="pemasukan">
+                    <input type="number" name="pemasukan" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center <?= ($validation->hasError('pemasukan') ? 'is-invalid' : '') ?>" id="pemasukan" value="<?= old('pemasukan'); ?>">
+                    <!-- Jika validation gagal muncilkan ini -->
+                    <div class="invalid-feedback">
+                        <?= '*' . $validation->getError('pemasukan'); ?>
+                    </div>
                 </div>
                 <!-- <div id="emailHelp" class="form-text">*We'll never share your email with anyone else.</div> -->
             </div>
@@ -61,18 +66,30 @@
 
                         <div class="input-group my-3  mx-0">
                             <!-- <span class="input-group-text">5.000.000</span> -->
-                            <input type="number" name="limitPengeluaran" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center" id="pemasukan">
+                            <input type="number" name="limitPengeluaran" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center <?= ($validation->hasError('limitPengeluaran') ? 'is-invalid' : '') ?>" id="pemasukan" value="<?= old('limitPengeluaran'); ?>">
+                            <div class="invalid-feedback">
+                                <?= '*' . $validation->getError('limitPengeluaran'); ?>
+                            </div>
                         </div>
+
                         <!-- <div id="emailHelp" class="form-text">*We'll never share your email with anyone else.</div> -->
                 </div>
                 <br><br>
+                <?php if ($dataPlanning != null) : ?>
 
-                <!-- <div class="d-grid gap-2 mt-5 ">
-                    <button class="btn btn-secondary btnTambah" type="button">+ Tambah Rencana Keuangan</button>
-                </div> -->
+                    <div class="form-check">
+                        <input class="form-check-input" name="konfirmasi" type="checkbox" value="ok" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Apakah anda ingin me-reset data pengeluaran ?
+                        </label>
+                    </div>
+
+                    <input type="hidden" name="slug-a" value="<?= $dataPlanning['id']; ?>">
+                <?php endif; ?>
+
 
                 <div class="d-grid gap-2 mt-5 ">
-                    <button class="btn btn-secondary" type="submit">Submit</button>
+                    <button class="btn btn-secondary" type="submit"><?= ($dataPlanning != null) ? 'Update Data' : 'Tambah Data' ?></button>
                 </div>
 
             </div>
