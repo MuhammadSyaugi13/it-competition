@@ -15,8 +15,8 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        $dataPlanning = $this->planning_model->dataPlanningDashboard(1);
-        $dataDebit = $this->debit_model->dataDebitDashboard(1);
+        $dataPlanning = $this->planning_model->dataPlanningDashboard(session()->get('email'));
+        $dataDebit = $this->debit_model->dataDebitDashboard(session()->get('email'));
 
         $allData = [
             "incomeBulanan" => $dataPlanning['income'],

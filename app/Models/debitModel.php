@@ -12,9 +12,10 @@ class debitModel extends Model
     protected $useTimestamp = true;
     protected $allowedFields = ['id', 'user_id', 'dataDebit', 'TotalDebit', 'created_at', 'updated_at'];
 
-    public function getDebit($user_id)
+    public function getDebit($email)
     {
-        $data = $this->where(['user_id' => $user_id])->find();
+        // $data = $this->where(['user_id' => $user_id])->find();
+        $data = $this->where(['email' => $email])->first();
 
         if ($data == []) {
             return false;
@@ -99,10 +100,10 @@ class debitModel extends Model
         d('ok');
     }
 
-    public function dataDebitDashboard($user_id)
+    public function dataDebitDashboard($email)
     {
         // query data debit ke database
-        $dataDebit = $this->getDebit($user_id);
+        $dataDebit = $this->getDebit($email);
         // dd();
         if ($dataDebit === false) {
             return [
