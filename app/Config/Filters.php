@@ -21,7 +21,7 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
-		// 'login'      => \Myth\Auth\Filters\LoginFilter::class,
+		'authFilter' => \App\Filters\authFilter::class,
 		// 'role'       => \Myth\Auth\Filters\RoleFilter::class,
 		// 'permission' => \Myth\Auth\Filters\PermissionFilter::class
 
@@ -36,13 +36,15 @@ class Filters extends BaseConfig
 	public $globals = [
 		'before' => [
 			// 'honeypot',
+			// 'authFilter' => ['except' => ['Auth/*']]
 			// 'login',
 			// 'dashboard'
 			// 'csrf',
 		],
 		'after'  => [
-			'toolbar',
-			// 'honeypot',
+			// 'toolbar',
+			// 'authFilter' => ['except' => ['Dashboard/*', 'Debit/*', 'Planninng/*', 'Auth/*']]
+			// // 'honeypot',
 		],
 	];
 
@@ -67,6 +69,7 @@ class Filters extends BaseConfig
 	 * @var array
 	 */
 	public $filters = [
-		// 'login' => ['before' => ['Planning', 'debit']],
+		'authFilter' => ['before' => ['Dashboard/*', 'Dashboard', 'Debit', 'Debit/*', 'Planning', 'Planning/*', '/']],
+		// 'authFilter' => ['before' => ['auth/*', 'auth']],
 	];
 }

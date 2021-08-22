@@ -91,7 +91,7 @@ class debitModel extends Model
             'id' => $dataDebit['id'],
             'user_id' => $user_id,
             'dataDebit' => '[{}]',
-            'TotalDebit' => $dataDebit['TotalDebit'],
+            'TotalDebit' => 0,
             'created_at' => $dataDebit['created_at'],
             'updated_at' => Time::now()
         ]);

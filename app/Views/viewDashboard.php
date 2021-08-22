@@ -3,6 +3,7 @@
 
 <div class="container mt-2">
 
+    <h2><?= session()->get('email'); ?></h2>
     <!-- Bagian menu -->
     <div class="row d-flex justify-content-center">
         <div class="col-sm-8">
