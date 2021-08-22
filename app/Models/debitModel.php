@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use CodeIgniter\Model;
@@ -15,23 +16,24 @@ class debitModel extends Model
     public function getDebit($user_id)
     {
         $data = $this->where(['user_id' => $user_id])->find();
+        // dd($data);
 
         if ($data == []) {
-            return false;
+            return 0;
         }
         return $data;
     }
 
-    public function totalDebit(string $debit)
+    public function totalDebit(string $debit, $user_id)
     {
         // ubah dari string ke integer
         $debit = intval($debit);
 
         // Ambil data total data dari database
-        $TotalDebit = $this->getDebit(1);
+        $TotalDebit = $this->getDebit($user_id);
 
         // jika data debit user tidak kosong
-        if ($TotalDebit !== false) {
+        if ($TotalDebit !== 0) {
             return $TotalDebit = intval($TotalDebit[0]['TotalDebit'] + $debit);
         }
 
@@ -58,7 +60,11 @@ class debitModel extends Model
 
     public function getPengeluaranHarian($data)
     {
-        $data = json_decode($data);
+
+        if ($data === 0) {
+            return 0;
+        }
+        $data = json_decode($data[0]['dataDebit']);
 
 
         if (isset($data[0]->Jumlah)) {
@@ -104,7 +110,7 @@ class debitModel extends Model
         // query data debit ke database
         $dataDebit = $this->getDebit($user_id);
         // dd();
-        if ($dataDebit === false) {
+        if ($dataDebit === 0) {
             return [
                 "totalDebit" => 0,
                 "debitHarian" => 0,
@@ -113,7 +119,7 @@ class debitModel extends Model
 
 
         // pengeluaran Harian
-        $dataPengeluaranHarian = $this->getPengeluaranHarian($dataDebit[0]['dataDebit']);
+        $dataPengeluaranHarian = $this->getPengeluaranHarian($dataDebit);
 
 
 

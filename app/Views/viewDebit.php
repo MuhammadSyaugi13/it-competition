@@ -3,15 +3,17 @@
 <div class="container my-3 bgc ">
 
     <!-- menu -->
-    <div class="btn-group sticky-top mt-2">
+    <div class="btn-group sticky-top mt-2 float-end">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
             <b>Menu</b>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
             <li><a class="dropdown-item" href="<?= base_url('/'); ?>">Dashboard</a></li>
             <li><a class="dropdown-item" href="<?= base_url('/planning'); ?>">Perencanaan Keuangan</a></li>
+            <li><a class="dropdown-item list-group-item-danger" href="<?= base_url('/auth/logout'); ?>">logout</a></li>
         </ul>
     </div>
+    <br><br>
     <!-- akhir menu -->
 
     <h2 class="mb-5 text-center">Catatan Pengeluaran</h2>
@@ -24,7 +26,7 @@
             <!-- <h4 class="text-center mt-6">Nominal Pengeluaran</h4> -->
             <div class="my-3 p-2 pemasukan mx-auto">
                 <div class="input-group  mb-1 mx-0">
-                    <input type="number" name="debit" placeholder="Input Nominal Pengeluaran" class="form-control pemasukan rounded-pill text-center" id="">
+                    <input type="number" autocomplete="off" name="debit" placeholder="Input Nominal Pengeluaran" class="form-control pemasukan rounded-pill text-center" id="">
                 </div>
                 <!-- <div id="emailHelp" class="form-text">*We'll never share your email with anyone else.</div> -->
             </div>
@@ -36,7 +38,7 @@
 
                     <div class="input-group my-3  mx-0">
                         <!-- <span class="input-group-text">5.000.000</span> -->
-                        <input type="text" name="keteranganDebit" placeholder="Keterangan Pengeluaran" class="form-control pemasukan rounded-pill text-center" id="pemasukan">
+                        <input type="text" autocomplete="off" name="keteranganDebit" placeholder="Keterangan Pengeluaran" class="form-control pemasukan rounded-pill text-center" id="pemasukan">
                     </div>
                     <!-- <div id="emailHelp" class="form-text">*We'll never share your email with anyone else.</div> -->
                 </div>
@@ -70,7 +72,6 @@
 
         <?php if ($cekIssetDebit) : ?>
 
-            <input type="hidden" name="slug-a" value="<?= $cekIssetDebit[0]['id'] ?>">
             <input type="hidden" name="creted_at" value="<?= $cekIssetDebit[0]["created_at"] ?>">
             <input type="hidden" name="dataDebit" value='<?= $cekIssetDebit[0]["dataDebit"] ?>'>
 

@@ -10,6 +10,7 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
             <li><a class="dropdown-item" href="<?= base_url('/'); ?>">Dashboard</a></li>
             <li><a class="dropdown-item" href="<?= base_url('/debit'); ?>">Catatan Pengeluaran</a></li>
+            <li><a class="dropdown-item list-group-item-danger" href="<?= base_url('/auth/logout'); ?>">logout</a></li>
         </ul>
     </div>
     <!-- akhir menu -->
@@ -27,18 +28,34 @@
                     <!-- <input type="number" name="pemasukan" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center" id="pemasukan"> -->
 
                     <select class="form-select form-control pemasukan rounded-pill text-center" name="bulan">
-                        <option value="Januari" <?= ($dataPlanning['bulan'] === "Januari") ? 'selected' : ''; ?>>Januari</option>
-                        <option value="Februari" <?= ($dataPlanning['bulan'] === "Februari") ? 'selected' : ''; ?>>Februari</option>
-                        <option value="Maret" <?= ($dataPlanning['bulan'] === "Maret") ? 'selected' : ''; ?>>Maret</option>
-                        <option value="April" <?= ($dataPlanning['bulan'] === "April") ? 'selected' : ''; ?>>April</option>
-                        <option value="Mei" <?= ($dataPlanning['bulan'] === "Mei") ? 'selected' : ''; ?>>Mei</option>
-                        <option value="Juni" <?= ($dataPlanning['bulan'] === "Juni") ? 'selected' : ''; ?>>Juni</option>
-                        <option value="Juli" <?= ($dataPlanning['bulan'] === "Juli") ? 'selected' : ''; ?>>Juli</option>
-                        <option value="Agustus" <?= ($dataPlanning['bulan'] === "Agustus") ? 'selected' : ''; ?>>Agustus</option>
-                        <option value="September" <?= ($dataPlanning['bulan'] === "September") ? 'selected' : ''; ?>>September</option>
-                        <option value="Oktober" <?= ($dataPlanning['bulan'] === "Oktober") ? 'selected' : ''; ?>>Oktober</option>
-                        <option value="November" <?= ($dataPlanning['bulan'] === "November") ? 'selected' : ''; ?>>November</option>
-                        <option value="Desember" <?= ($dataPlanning['bulan'] === "Desember") ? 'selected' : ''; ?>>Desember</option>
+                        <?php if ($dataPlanning == null) : ?>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
+                        <?php else : ?>
+                            <option value="Januari" <?= ($dataPlanning['bulan'] === "Januari") ? 'selected' : ''; ?>>Januari</option>
+                            <option value="Februari" <?= ($dataPlanning['bulan'] === "Februari") ? 'selected' : ''; ?>>Februari</option>
+                            <option value="Maret" <?= ($dataPlanning['bulan'] === "Maret") ? 'selected' : ''; ?>>Maret</option>
+                            <option value="April" <?= ($dataPlanning['bulan'] === "April") ? 'selected' : ''; ?>>April</option>
+                            <option value="Mei" <?= ($dataPlanning['bulan'] === "Mei") ? 'selected' : ''; ?>>Mei</option>
+                            <option value="Juni" <?= ($dataPlanning['bulan'] === "Juni") ? 'selected' : ''; ?>>Juni</option>
+                            <option value="Juli" <?= ($dataPlanning['bulan'] === "Juli") ? 'selected' : ''; ?>>Juli</option>
+                            <option value="Agustus" <?= ($dataPlanning['bulan'] === "Agustus") ? 'selected' : ''; ?>>Agustus</option>
+                            <option value="September" <?= ($dataPlanning['bulan'] === "September") ? 'selected' : ''; ?>>September</option>
+                            <option value="Oktober" <?= ($dataPlanning['bulan'] === "Oktober") ? 'selected' : ''; ?>>Oktober</option>
+                            <option value="November" <?= ($dataPlanning['bulan'] === "November") ? 'selected' : ''; ?>>November</option>
+                            <option value="Desember" <?= ($dataPlanning['bulan'] === "Desember") ? 'selected' : ''; ?>>Desember</option>
+
+                        <?php endif; ?>
                     </select>
                 </div>
                 <!-- <div id="emailHelp" class="form-text">*We'll never share your email with anyone else.</div> -->
@@ -50,7 +67,7 @@
             <div class="my-3 p-2 pemasukan mx-auto">
                 <div class="input-group  mb-1 mx-0">
                     <!-- <span class="input-group-text">5.000.000</span> -->
-                    <input type="number" name="pemasukan" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center <?= ($validation->hasError('pemasukan') ? 'is-invalid' : '') ?>" id="pemasukan" value="<?= old('pemasukan'); ?>">
+                    <input type="number" autocomplete="off" name="pemasukan" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center <?= ($validation->hasError('pemasukan') ? 'is-invalid' : '') ?>" id="pemasukan" value="<?= old('pemasukan'); ?>">
                     <!-- Jika validation gagal muncilkan ini -->
                     <div class="invalid-feedback">
                         <?= '*' . $validation->getError('pemasukan'); ?>
@@ -66,7 +83,7 @@
 
                         <div class="input-group my-3  mx-0">
                             <!-- <span class="input-group-text">5.000.000</span> -->
-                            <input type="number" name="limitPengeluaran" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center <?= ($validation->hasError('limitPengeluaran') ? 'is-invalid' : '') ?>" id="pemasukan" value="<?= old('limitPengeluaran'); ?>">
+                            <input type="number" autocomplete="off" name="limitPengeluaran" placeholder="Input Nominal" class="form-control pemasukan rounded-pill text-center <?= ($validation->hasError('limitPengeluaran') ? 'is-invalid' : '') ?>" id="pemasukan" value="<?= old('limitPengeluaran'); ?>">
                             <div class="invalid-feedback">
                                 <?= '*' . $validation->getError('limitPengeluaran'); ?>
                             </div>

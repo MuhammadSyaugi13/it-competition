@@ -23,7 +23,17 @@ class planningModel extends Model
     public function dataPlanningDashboard($user_id)
     {
         // query data2 planning ke database
+
         $dataPlanning = $this->getPlanning($user_id);
+
+        if ($dataPlanning == null) {
+            session()->setFlashdata('planning', 'Anda belum membuat Perencanaan Keuangan, silahkan ke menu Perencanaan Keuangan');
+            return [
+                "income" => 0,
+                "limitHarian" => 0,
+                "bulan" => '-'
+            ];
+        }
 
         return [
             "income" => intval($dataPlanning['income']),

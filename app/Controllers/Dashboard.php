@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\debitModel;
 use App\Models\planningModel;
+use App\Models\dashboardModel;
 
 class Dashboard extends BaseController
 {
@@ -11,12 +12,15 @@ class Dashboard extends BaseController
     {
         $this->debit_model = new debitModel();
         $this->planning_model = new planningModel();
+        $this->dashboard_model = new dashboardModel();
     }
 
     public function index()
     {
-        $dataPlanning = $this->planning_model->dataPlanningDashboard(1);
-        $dataDebit = $this->debit_model->dataDebitDashboard(1);
+        $dataUser = $this->dashboard_model->getUser(session()->get('email'));
+
+        $dataPlanning = $this->planning_model->dataPlanningDashboard($dataUser['id']);
+        $dataDebit = $this->debit_model->dataDebitDashboard(intval($dataUser['id']));
 
         $allData = [
             "incomeBulanan" => $dataPlanning['income'],

@@ -20,7 +20,7 @@
                                 <form class="user" action="<?= base_url('Auth/daftar'); ?>" method="POST">
                                     <?= csrf_field(); ?>
                                     <div class="form-group">
-                                        <input type="email" placeholder="Enter Your Email" name="email" class="form-control form-control-user <?= ($validation->hasError('email') ? 'is-invalid' : '') ?>" value="<?= old('email'); ?>">
+                                        <input type="email" autocomplete="off" placeholder="Enter Your Email" name="email" class="form-control form-control-user <?= ($validation->hasError('email') ? 'is-invalid' : '') ?>" value="<?= old('email'); ?>">
 
                                         <!-- Jika validation gagal muncilkan ini -->
                                         <div class="invalid-feedback">
@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="username" class="form-control form-control-user <?= ($validation->hasError('username') ? 'is-invalid' : '') ?>" value="<?= old('username'); ?>" placeholder="Enter Your Username">
+                                        <input type="text" autocomplete="off" name="username" class="form-control form-control-user <?= ($validation->hasError('username') ? 'is-invalid' : '') ?>" value="<?= old('username'); ?>" placeholder="Enter Your Username">
 
                                         <!-- Jika validation gagal muncilkan ini -->
                                         <div class="invalid-feedback">
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Login
+                                        Register
                                     </button>
 
                                 </form>
