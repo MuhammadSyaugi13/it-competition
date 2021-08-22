@@ -11,20 +11,19 @@ class planningModel extends Model
     protected $useTimestamp = true;
     protected $allowedFields = ['user_id', 'income', 'limit', 'bulan'];
 
-    public function getPlanning($email = null)
+    public function getPlanning($user_id = null)
     {
-        // $data = $this->where('user_id', $user_id)->find();
-        $data = $this->where('email', $email)->find();
+        $data = $this->where('user_id', $user_id)->find();
         if ($data == []) {
             return null;
         }
         return $data[0];
     }
 
-    public function dataPlanningDashboard($email)
+    public function dataPlanningDashboard($user_id)
     {
         // query data2 planning ke database
-        $dataPlanning = $this->getPlanning($email);
+        $dataPlanning = $this->getPlanning($user_id);
 
         return [
             "income" => intval($dataPlanning['income']),
