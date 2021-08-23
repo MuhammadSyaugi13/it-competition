@@ -17,11 +17,11 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url('/css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('/assets/css/' . $css); ?>">
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="">
 
     <?= $this->renderSection('content'); ?>
 

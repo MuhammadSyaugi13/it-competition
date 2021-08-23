@@ -43,8 +43,8 @@
                                             <?= '*' . $validation->getError('password'); ?>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Register
+                                    <button type="submit" class="btn color text-light btn-user btn-block">
+                                        <b>Register</b>
                                     </button>
 
                                 </form>

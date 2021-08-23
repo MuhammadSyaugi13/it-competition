@@ -19,7 +19,7 @@ class Auth extends BaseController
 
         $data = [
             'title' => 'FP || Login',
-            'css' => '',
+            'css' => 'authStyle.css',
             'validation' => \Config\Services::validation(),
         ];
         return view('auth/loginView', $data);
@@ -54,7 +54,7 @@ class Auth extends BaseController
     {
         $data = [
             'title' => 'FP || Register',
-            'css' => '',
+            'css' => 'authStyle.css',
             'validation' => \Config\Services::validation(),
         ];
         return view('auth/registerView', $data);

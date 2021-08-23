@@ -5,7 +5,7 @@
 <!-- Bagian menu -->
 <div class="row d-flex justify-content-center">
     <div class="col-sm-8">
-        <button class="btn btn-danger mt-2 float-end"><a href="" class="text-decoration-none text-light">Logout</a></button>
+        <button class="btn btn-danger mt-2 float-end"><a href="<?= base_url('auth/logout') ?>" class="text-decoration-none text-light">Logout</a></button>
         <br><br>
         <div class="row d-flex justify-content-sm-around p-3">
             <div class="col-sm-4 mx-2 text-center perencanaan p-2 mt-3">

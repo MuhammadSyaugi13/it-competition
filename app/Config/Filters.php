@@ -43,7 +43,7 @@ class Filters extends BaseConfig
 		],
 		'after'  => [
 			// 'toolbar',
-			// 'authFilter' => ['except' => ['Dashboard/*', 'Debit/*', 'Planninng/*', 'Auth/*']]
+			// 'authFilter' => ['except' => ['Auth', 'Auth/register', 'Planninng/*', 'Auth/*'],]
 			// // 'honeypot',
 		],
 	];
@@ -69,7 +69,9 @@ class Filters extends BaseConfig
 	 * @var array
 	 */
 	public $filters = [
-		'authFilter' => ['before' => ['Dashboard/*', 'Dashboard', 'Debit', 'Debit/*', 'Planning', 'Planning/*', '/']],
-		// 'authFilter' => ['before' => ['auth/*', 'auth']],
+		'authFilter' => [
+			'before' => ['Dashboard/*', 'Dashboard', 'Debit', 'Debit/*', 'Planning', 'Planning/*', '/'],
+			// 'after' => ['Auth/index', 'auth']
+		],
 	];
 }
